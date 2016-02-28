@@ -16,7 +16,7 @@
 	<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 
 	<script>
-		var map = L.map('map').setView([39.74739, -105], 13);
+		var map = L.map('map').setView([51.529056,-0.126225], 17);
 
 		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
 			maxZoom: 18,
@@ -26,16 +26,9 @@
 			id: 'mapbox.light'
 		}).addTo(map);
 
-		var baseballIcon = L.icon({
-			iconUrl: 'baseball-marker.png',
-			iconSize: [32, 37],
-			iconAnchor: [16, 37],
-			popupAnchor: [0, -28]
-		});
-
 		function onEachFeature(feature, layer) {
-			var popupContent = "<p>I started out as a GeoJSON " +
-					feature.geometry.type + ", but now I'm a Leaflet vector!</p>";
+			var popupContent = "<p>" +
+					feature.geometry.type + " details.</p>";
 
 			if (feature.properties && feature.properties.popupContent) {
 				popupContent += feature.properties.popupContent;
@@ -44,7 +37,20 @@
 			layer.bindPopup(popupContent);
 		}
 
-		L.geoJson([bicycleRental, campus], {
+		L.geoJson(freeBus, {
+
+			filter: function (feature, layer) {
+				if (feature.properties) {
+					// If the property "underConstruction" exists and is true, return false (don't render features under construction)
+					return feature.properties.underConstruction !== undefined ? !feature.properties.underConstruction : true;
+				}
+				return false;
+			},
+
+			onEachFeature: onEachFeature
+		}).addTo(map);
+		
+		L.geoJson(bicycleRental, {
 
 			style: function (feature) {
 				return feature.properties && feature.properties.style;
@@ -62,28 +68,6 @@
 					fillOpacity: 0.8
 				});
 			}
-		}).addTo(map);
-
-		L.geoJson(freeBus, {
-
-			filter: function (feature, layer) {
-				if (feature.properties) {
-					// If the property "underConstruction" exists and is true, return false (don't render features under construction)
-					return feature.properties.underConstruction !== undefined ? !feature.properties.underConstruction : true;
-				}
-				return false;
-			},
-
-			onEachFeature: onEachFeature
-		}).addTo(map);
-
-		var coorsLayer = L.geoJson(coorsField, {
-
-			pointToLayer: function (feature, latlng) {
-				return L.marker(latlng, {icon: baseballIcon});
-			},
-
-			onEachFeature: onEachFeature
 		}).addTo(map);
 
 	</script>
