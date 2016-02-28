@@ -1,4 +1,4 @@
-var freeBus = {
+var connections = {
     "type": "FeatureCollection",
     "features": [
         {
@@ -11,8 +11,9 @@ var freeBus = {
                 ]
             },
             "properties": {
-                "popupContent": "",
-                "underConstruction": false
+                "popupContent": "2/8 Tubes Free",
+                "underConstruction": false,
+"status" : "A"
             },
             "id": 5
         },
@@ -26,8 +27,9 @@ var freeBus = {
                 ]
             },
             "properties": {
-                "popupContent": "",
-                "underConstruction": false
+                "popupContent": "0/8 Tubes Free",
+                "underConstruction": false,
+"status" : "R"
             },
             "id": 6
         },
@@ -41,30 +43,16 @@ var freeBus = {
                 ]
             },
             "properties": {
-                "popupContent": "",
-                "underConstruction": false
+                "popupContent": "7/8 Tubes Free",
+                "underConstruction": false,
+"status" : "G"
             },
             "id": 7
-        },
-		{
-            "type": "Feature",
-            "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                    [-0.126225, 51.529056],
-                    [-0.128189, 51.528827]
-                ]
-            },
-            "properties": {
-                "popupContent": "",
-                "underConstruction": false
-            },
-            "id": 8
         }
     ]
 };
 
-var bicycleRental = {
+var equipment = {
     "type": "FeatureCollection",
     "features": [
         {
