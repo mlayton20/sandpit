@@ -65,11 +65,11 @@ var equipment = {
             },
             "properties": {
                 "popupContent": "Exchange, Judd Street",
-                "underConstruction": false
+                "underConstruction": false,
+                "equipment": "Exchange"
             },
             "id": 1
-        },
-{
+        },{
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -79,11 +79,11 @@ var equipment = {
             },
             "properties": {
                 "popupContent": "T-Node, Euston Rd",
-                "underConstruction": false
+                "underConstruction": false,
+                "equipment": "T-Node"
             },
             "id": 2
-        },
-{
+        },{
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -93,11 +93,11 @@ var equipment = {
             },
             "properties": {
                 "popupContent": "Y-Code, St. Pancras Renaissance Hotel London",
-                "underConstruction": false
+                "underConstruction": false,
+                "equipment": "Y-Code"
             },
             "id": 3
-        },
-{
+        },{
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -107,9 +107,10 @@ var equipment = {
             },
             "properties": {
                 "popupContent": "Y-Code, The Shaw Theatre",
-                "underConstruction": false
+                "underConstruction": false,
+                "equipment": "Y-Code"
             },
             "id": 4
-        }
+        },
     ]
 };

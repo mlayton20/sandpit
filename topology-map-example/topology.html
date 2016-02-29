@@ -8,6 +8,33 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+	
+	<style>
+	.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+
+	.legend {
+    line-height: 18px;
+    color: #555;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+	</style>
 </head>
 <body>
 	<div id="map" style="width: 600px; height: 400px"></div>
@@ -22,12 +49,31 @@
 			maxZoom: 18,
 			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
 				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+				'Imagery ï¿½ <a href="http://mapbox.com">Mapbox</a>',
 			id: 'mapbox.light'
 		}).addTo(map);
 
 		function onEachFeature(feature, layer) {
 			layer.bindPopup(feature.properties.popupContent);
+		}
+		
+		function getEquipmentColor(d) {
+				switch (d) {
+					case 'Exchange': return "#9900ff";
+					case 'T-Node':   return "#4d4dff";
+					case 'Y-Code':   return "#00ccff";
+				}
+		}
+		
+		function getEquipmentStyle(feature) {
+			return {
+				radius: 8,
+					fillColor: getEquipmentColor(feature.properties.equipment),
+					color: "#000",
+					weight: 1,
+					opacity: 1,
+					fillOpacity: 0.8
+			};
 		}
 
 		L.geoJson(connections, {
@@ -52,23 +98,34 @@
 		
 		L.geoJson(equipment, {
 
-			style: function (feature) {
-				return feature.properties && feature.properties.style;
-			},
+			style: getEquipmentStyle,
 
 			onEachFeature: onEachFeature,
 
 			pointToLayer: function (feature, latlng) {
-				return L.circleMarker(latlng, {
-					radius: 8,
-					fillColor: "#0000ff",
-					color: "#000",
-					weight: 1,
-					opacity: 1,
-					fillOpacity: 0.8
-				});
+				return L.circleMarker(latlng, {style: getEquipmentStyle});
 			}
 		}).addTo(map);
+		
+		var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = ['Exchange','T-Node','Y-Code'],
+        labels = [];
+
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getEquipmentColor(grades[i]) + '"></i> ' +
+            (i < grades.length-1 ? grades[i] + '<br>' : grades[i]);
+    }
+
+    return div;
+};
+
+legend.addTo(map);
 
 	</script>
 </body>
