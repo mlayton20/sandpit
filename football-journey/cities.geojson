@@ -1,0 +1,16 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },                                                                                
+"features": [
+{ "type": "Feature", "id": 1, "properties": { "original.address": "Paris", "returned.address": "Paris, France", "LATITUDE": 48.856614, "LONGITUDE": 2.352222 }, "geometry": { "type": "Point", "coordinates": [ 2.352222, 48.856614 ] } },
+{ "type": "Feature", "id": 2, "properties": { "original.address": "Saint-Denis", "returned.address": "Saint-Denis, France", "LATITUDE": 48.936181, "LONGITUDE": 2.357443 }, "geometry": { "type": "Point", "coordinates": [ 2.357443, 48.936181 ] } },
+{ "type": "Feature", "id": 3, "properties": { "original.address": "Bordeaux", "returned.address": "Bordeaux, France", "LATITUDE": 44.837789, "LONGITUDE": -0.579180 }, "geometry": { "type": "Point", "coordinates": [ -0.57918, 44.837789 ] } },
+{ "type": "Feature", "id": 4, "properties": { "original.address": "Lens", "returned.address": "Lens, France", "LATITUDE": 50.428930, "LONGITUDE": 2.831830 }, "geometry": { "type": "Point", "coordinates": [ 2.83183, 50.42893 ] } },
+{ "type": "Feature", "id": 5, "properties": { "original.address": "Lille", "returned.address": "Lille, France", "LATITUDE": 50.629250, "LONGITUDE": 3.057256 }, "geometry": { "type": "Point", "coordinates": [ 3.057256, 50.62925 ] } },
+{ "type": "Feature", "id": 6, "properties": { "original.address": "Lyon", "returned.address": "Lyon, France", "LATITUDE": 45.764043, "LONGITUDE": 4.835659 }, "geometry": { "type": "Point", "coordinates": [ 4.835659, 45.764043 ] } },
+{ "type": "Feature", "id": 7, "properties": { "original.address": "Marseille", "returned.address": "Marseilles, France", "LATITUDE": 43.296482, "LONGITUDE": 5.369780 }, "geometry": { "type": "Point", "coordinates": [ 5.36978, 43.296482 ] } },
+{ "type": "Feature", "id": 8, "properties": { "original.address": "Nice", "returned.address": "Nice, France", "LATITUDE": 43.710173, "LONGITUDE": 7.261953 }, "geometry": { "type": "Point", "coordinates": [ 7.261953, 43.710173 ] } },
+{ "type": "Feature", "id": 9, "properties": { "original.address": "Saint-Étienne", "returned.address": "Saint-Étienne, France", "LATITUDE": 45.439695, "LONGITUDE": 4.387178 }, "geometry": { "type": "Point", "coordinates": [ 4.387178, 45.439695 ] } },
+{ "type": "Feature", "id": 10, "properties": { "original.address": "Toulouse", "returned.address": "Toulouse, France", "LATITUDE": 43.604652, "LONGITUDE": 1.444209 }, "geometry": { "type": "Point", "coordinates": [ 1.444209, 43.604652 ] } }
+]
+}
